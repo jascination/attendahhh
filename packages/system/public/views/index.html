@@ -79,13 +79,13 @@
     <section class="row" ng-show="step === 4">
     	<div class="col-sm-8 col-sm-offset-2">
 			<div class='row'>
-				<input ng-model="fil" class="col-xs-12">
+				<input ng-model="fil" class="col-xs-12 bigInput" placeholder="Filter results">
 			</div>
 
 		    <table class="table table-striped" ng-show="filterShow">
 		        <tbody>
 			        <tr>
-			          <th ng-repeat="key in notSorted(filtered[0])">
+			          <th ng-repeat="key in notSorted(filtered[0])" ng-if="$index != 1">
 			             {{key}}
 			          </th>
 			        </tr>
@@ -93,7 +93,7 @@
 			          <td>
 			          	<button ng-click="attend($index)" class="btn" ng-class="filtered[$index].attendClass">Attend</button>
 			          </td>
-			          <td ng-repeat="key in notSorted(row)" ng-if="$index > 0" ng-init="value = row[key]">
+			          <td ng-repeat="key in notSorted(row)" ng-if="$index > 1" ng-init="value = row[key]">
 			            {{value}}
 			         </td>
 			        </tr>

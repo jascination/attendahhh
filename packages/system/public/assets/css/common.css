@@ -1,0 +1,123 @@
+.page-header {
+    padding-bottom: 0 !important;
+    margin: 0 !important;
+    border-bottom: 0 !important;
+}
+.page-header .navbar-nav {
+    float: right;
+}
+.page-header>div>div, .page-header>div>ul {
+    display:inline-block;
+}
+.text-edit {
+    padding: 13px 0 0 0;
+}
+.account {
+    text-align:right;
+}
+.account>div, .account>ul {
+    text-align:left;
+}
+.navbar .nav>li>a.brand {
+    padding-left:20px;
+    margin-left:0
+}
+.content {
+    margin-top:70px;
+    width:100%
+}
+footer {
+    position:fixed;
+    left:0;
+    bottom:0;
+    height:30px;
+    width:100%;
+    background:#ddd;
+    -webkit-box-shadow:0 8px 6px 6px black;
+    -moz-box-shadow:0 8px 6px 6px black;
+    box-shadow:0 8px 6px 6px black
+}
+footer p {
+    padding:5px 0 12px 10px
+}
+.ng-invalid.ng-dirty{
+    border-color:#FA787E;
+}
+.ng-valid.ng-dirty{
+    border-color:#78FA89;
+}
+
+.centered{
+    text-align:center;
+}
+
+.bigInput{
+    height:30px;
+}
+
+textarea.bigInput{
+    height:300px;
+}
+
+.selector{
+    cursor:pointer;
+}
+
+.selector th, .selector td{
+    opacity:0.4;
+}
+.selector th:hover{
+    opacity:1;
+}
+
+.selector .selected{
+    opacity:1;
+    text-decoration: underline;
+}
+
+.updating{
+    position: fixed;
+    bottom: 0;
+    right: 40px;
+}
+
+.spinningBig{
+    position:absolute;
+    width:100%;
+    left:0;
+    right:0;
+    top:0;
+    bottom:0;
+    background-color: #fcfcfc;
+    font-size: 64px;
+    z-index:100;
+}
+
+.spinner {
+  width: 30px;
+  height: 30px;
+  background-color: #333;
+
+  margin: 400px auto;
+  -webkit-animation: rotateplane 1.2s infinite ease-in-out;
+  animation: rotateplane 1.2s infinite ease-in-out;
+}
+
+@-webkit-keyframes rotateplane {
+  0% { -webkit-transform: perspective(120px) }
+  50% { -webkit-transform: perspective(120px) rotateY(180deg) }
+  100% { -webkit-transform: perspective(120px) rotateY(180deg)  rotateX(180deg) }
+}
+
+@keyframes rotateplane {
+  0% { 
+    transform: perspective(120px) rotateX(0deg) rotateY(0deg);
+    -webkit-transform: perspective(120px) rotateX(0deg) rotateY(0deg) 
+  } 50% { 
+    transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg);
+    -webkit-transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg) 
+  } 100% { 
+    transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+    -webkit-transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+  }
+}

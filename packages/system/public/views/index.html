@@ -1,0 +1,108 @@
+<section data-ng-controller="IndexController">
+    <h1 mean-token="'home-default'">Attendahh...</h1>
+</section>
+
+<div ng-controller="list">
+	<section class="spinningBig" ng-show="loading">
+		<div class="spinner"></div>
+	</section>
+
+
+	<section class="row" ng-show="step === 1">
+		<div class="col-sm-8 col-sm-offset-2">
+	
+		    <h2 class="infotitle">First, give this session a name</h2>
+			<div class="row">
+			    <input class="bigInput col-sm-10" ng-model="nameInput">
+			    <button class="bigInput col-sm-2" ng-click="nameIt()">Next</button>
+			</div>
+			<div class="alert alert-warning" ng-show="duplicateName">
+				<p>We've already got a session with that name. When James gets better he'll add a function to overwrite/renew the session but for now just choose a new name, like <span class="label label-primary">{{nameInput + ' - USE THIS ONE'}}</span> or something.</p>
+			</div>
+		</div>
+	</section>
+
+	<section class="row" ng-show="step === 1.5">
+		<div class="col-sm-8 col-sm-offset-2">
+	
+		    <h2 class="infotitle">First, give this session a name</h2>
+			<div class="row">
+			    <input class="bigInput col-sm-10" ng-model="nameInput">
+			    <button class="bigInput col-sm-2" ng-click="nameIt()">Next</button>
+			</div>
+		</div>
+	</section>
+
+
+
+	<section class="row" ng-show="step === 2">
+		<div class="col-sm-8 col-sm-offset-2">
+		    <h2 class="infotitle">Now feed me some data!</h2>
+
+		    <ul>
+		    	<li>Step 1: Copy your CSV of attendees from the GA & Eventbrite backend (put them in a joint spreadsheet, make sure the columns you care about (name + email) line up)</li>
+				<li>Step 2: Go to <a href="www.convertcsv.com/csv-to-json.htm">this link</a>, paste in your data</li>
+				<li>Step 3: Click "convert to JSON" and copy all the text that appears </li>
+				<li>Step 4: Put it in this box</li>
+		    </ul>
+			<div class="rpw">
+			    <textarea class="bigInput col-xs-10 col-xs-offset-1" ng-model="$parent.dataIn"></textarea>
+		    </div>
+		    <div class="row centered">
+		    	<button ng-click="convert()">Add that data!</button>
+		    </div>
+		</div>
+	</section>
+
+	<section class="row" ng-show="step === 3">
+		<div class="col-sm-8 col-sm-offset-2">
+			<h3>Choose the columns you care about</h3>
+			<table class="table table-striped selector">
+		      <tbody>
+		        <tr>
+		          <th ng-class="selectBtn[key]" ng-repeat="key in notSorted(newData)" ng-click="selectColumns(key)">
+		             {{key}}
+		          </th>
+		        </tr>
+		        <tr>
+		          <td ng-repeat="key in notSorted(newData)" ng-init="value = newData[key]">
+		            {{value}}
+		         </td>
+		        </tr>
+		      </tbody>
+		    </table>
+
+		    <button ng-click="startItUp()">Let's get started!</button>
+		</div>
+	</section>
+
+    <section class="row" ng-show="step === 4">
+    	<div class="col-sm-8 col-sm-offset-2">
+			<div class='row'>
+				<input ng-model="fil" class="col-xs-12">
+			</div>
+
+		    <table class="table table-striped" ng-show="filterShow">
+		        <tbody>
+			        <tr>
+			          <th ng-repeat="key in notSorted(filtered[0])">
+			             {{key}}
+			          </th>
+			        </tr>
+			        <tr ng-repeat="row in filtered | filter:fil">
+			          <td>
+			          	<button ng-click="attend($index)" class="btn" ng-class="filtered[$index].attendClass">Attend</button>
+			          </td>
+			          <td ng-repeat="key in notSorted(row)" ng-if="$index > 0" ng-init="value = row[key]">
+			            {{value}}
+			         </td>
+			        </tr>
+			      </tbody>
+		    </table>
+		</div>    
+	</section>
+	<div class="updatingBar row alert alert-success" ng-show="updating">
+		Updating to Database
+	</div> 
+</div>
+

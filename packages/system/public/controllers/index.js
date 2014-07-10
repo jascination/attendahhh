@@ -4,8 +4,8 @@ angular.module('mean.system').controller('IndexController', ['$scope', 'Global',
     function($scope, Global) {
         $scope.global = Global;
     }
-]).controller('list', ['$scope', '$http', 'Global',
-    function($scope, $http, Global) {
+]).controller('list', ['$scope', '$http', '$timeout', 'Global',
+    function($scope, $http, $timeout, Global) {
         var sessionObj = {
             name: 'untitled',
             attendees: []
@@ -164,7 +164,21 @@ angular.module('mean.system').controller('IndexController', ['$scope', 'Global',
             });
         }
 
+        $scope.addNTF = function(newEmail) {
+            $scope.filtered.push({
+                attended: 1,
+                attendClass: 'btn-success',
+                email: newEmail,
+                isNew: 1
+            });
 
+            $scope.newEmail = '';
+            $scope.newSuccess = 1;
+            $timeout(function() {
+                console.log("5 secs are oveah");
+                $scope.newSuccess = 0;
+            }, 5000);
+        }
 
 
     }

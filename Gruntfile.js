@@ -23,16 +23,9 @@ module.exports = function(grunt) {
             },
             html: {
                 files: paths.html,
-                options: {
-                    livereload: true,
-                    interval: 2000
-                }
             },
             css: {
                 files: paths.css,
-                options: {
-                    livereload: true
-                }
             }
         },
         uglify: {

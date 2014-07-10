@@ -13,8 +13,10 @@
 	
 		    <h2 class="infotitle">First, give this session a name</h2>
 			<div class="row">
-			    <input class="bigInput col-sm-10" ng-model="nameInput">
-			    <button class="bigInput col-sm-2" ng-click="nameIt()">Next</button>
+				<form>
+				    <input class="bigInput col-sm-10" ng-model="nameInput">
+				    <button class="bigInput col-sm-2" ng-click="nameIt()">Next</button>
+				</form>
 			</div>
 			<div class="alert alert-warning" ng-show="duplicateName">
 				<p>We've already got a session with that name. When James gets better he'll add a function to overwrite/renew the session but for now just choose a new name, like <span class="label label-primary">{{nameInput + ' - USE THIS ONE'}}</span> or something.</p>
@@ -41,7 +43,7 @@
 
 		    <ul>
 		    	<li>Step 1: Copy your CSV of attendees from the GA & Eventbrite backend (put them in a joint spreadsheet, make sure the columns you care about (name + email) line up)</li>
-				<li>Step 2: Go to <a href="www.convertcsv.com/csv-to-json.htm">this link</a>, paste in your data</li>
+				<li>Step 2: Go to <a target="_blank" href="http://www.convertcsv.com/csv-to-json.htm">this link</a>, paste in your data</li>
 				<li>Step 3: Click "convert to JSON" and copy all the text that appears </li>
 				<li>Step 4: Put it in this box</li>
 		    </ul>
@@ -78,9 +80,29 @@
 
     <section class="row" ng-show="step === 4">
     	<div class="col-sm-8 col-sm-offset-2">
+
+			<h3>Add a new email address...</h3>
+
+    		<div class='row'>
+    			<form class="row">
+					<input ng-model="newEmail" class="col-xs-10 bigInput" placeholder="Input a new email">
+					<button class="btn btn-success col-xs-2 biginput" ng-click="addNTF(newEmail)">Add em!</button>
+				</form>
+				<div class="row">
+					<div class="col-xs-12" class="alert alert-info" ng-show="newSuccess === 1">
+						Great, added a NTF to the database!
+					</div>
+				</div>
+			</div>
+
+			<h3>Or Check-in Attendees</h3>
+
 			<div class='row'>
 				<input ng-model="fil" class="col-xs-12 bigInput" placeholder="Filter results">
 			</div>
+
+
+			
 
 		    <table class="table table-striped" ng-show="filterShow">
 		        <tbody>
